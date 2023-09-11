@@ -6,31 +6,11 @@
 	<dict>
 		<key>GoogleSignIn.bundle/Info.plist</key>
 		<data>
-		FYqeOZRs4M0LL0EuX8WmFoAxPq4=
+		K9FeyJoHXkyXT5dkymdU2VNA0n8=
 		</data>
 		<key>GoogleSignIn.bundle/Roboto-Bold.ttf</key>
 		<data>
 		RzJ98PNefNfIZFh0iXp0SWl1RK4=
-		</data>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeDirectory</key>
-		<data>
-		uLldkCqWqohEyyLdkiXQpvFLzt8=
-		</data>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeRequirements</key>
-		<data>
-		OnX22wWFKRSOFN1+obRynMCeyXM=
-		</data>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeRequirements-1</key>
-		<data>
-		6laYtsNEyilPigyDKv1AG6B5emw=
-		</data>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeResources</key>
-		<data>
-		Qhb74FbnfeuJ0jvq6lCwsuLRYKI=
-		</data>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeSignature</key>
-		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
 		<key>GoogleSignIn.bundle/ar.lproj/GoogleSignIn.strings</key>
 		<dict>
@@ -420,7 +400,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sYakNNktfr7j+5pivfDe1TpdtcY=
+		GIH2DUvf68JQcN7UXY8QtHkHTyw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -433,11 +413,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FYqeOZRs4M0LL0EuX8WmFoAxPq4=
+			K9FeyJoHXkyXT5dkymdU2VNA0n8=
 			</data>
 			<key>hash2</key>
 			<data>
-			D5XRxOR63C6P5adDIt+oAfz5dM1hoWAbgcxKId+/lsI=
+			bMVJm22AQEt7p59lRln8F/LrdYVm3o9+huY5Fh3CCXA=
 			</data>
 		</dict>
 		<key>GoogleSignIn.bundle/Roboto-Bold.ttf</key>
@@ -449,61 +429,6 @@
 			<key>hash2</key>
 			<data>
 			WU10pJ4we+fMnh7l8QI2hOaCDPEbzJaL7lkDkeGtWlo=
-			</data>
-		</dict>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeDirectory</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			uLldkCqWqohEyyLdkiXQpvFLzt8=
-			</data>
-			<key>hash2</key>
-			<data>
-			LivCGeiTJlfzjVPKba9D2aS3WFQk3sl8VVYdizI/Ni4=
-			</data>
-		</dict>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeRequirements</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			OnX22wWFKRSOFN1+obRynMCeyXM=
-			</data>
-			<key>hash2</key>
-			<data>
-			mHkgkE6rZQ51eIwFSqCwUk5qgL/HGqMt+NI3phdD+YY=
-			</data>
-		</dict>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeRequirements-1</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			6laYtsNEyilPigyDKv1AG6B5emw=
-			</data>
-			<key>hash2</key>
-			<data>
-			wyqu8NvvYIbz6D3M10QtjmPfUKVK8Lk2Russt+0II6c=
-			</data>
-		</dict>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Qhb74FbnfeuJ0jvq6lCwsuLRYKI=
-			</data>
-			<key>hash2</key>
-			<data>
-			2zCixoHyiYx2Ub6g9ytFQUanb6FE6+1z6Hh0Bj51Trs=
-			</data>
-		</dict>
-		<key>GoogleSignIn.bundle/_CodeSignature/CodeSignature</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2jmj7l5rSw0yVb/vlWAYkK/YBwk=
-			</data>
-			<key>hash2</key>
-			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
 		<key>GoogleSignIn.bundle/ar.lproj/GoogleSignIn.strings</key>

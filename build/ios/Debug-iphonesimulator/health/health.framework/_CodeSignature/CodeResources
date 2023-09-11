@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/health-Swift.h</key>
 		<data>
-		ZRWqXRKTMfIKlwx2MzA2c50c2HI=
+		+41YGODlAMd0JJOcWVZ0Qywpf3M=
 		</data>
 		<key>Headers/health-umbrella.h</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9iH9eGypgeQLTqQwVAAmJv3vEo8=
+		nI5NfSfNGmghyIG1ziVH+I8SJoQ=
 		</data>
 		<key>Modules/health.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		09nNCOiPtBk0dKJ5HjnN6XZJWw4=
+		8nGVoTIeKx+E3KVXNWzxZEKgUac=
 		</data>
 		<key>Modules/health.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		u+SlQ/que6wKfJnXWRJdUFaT8ro=
+		VqV0STNcKcPIr/yI+8PwOzKe2kM=
 		</data>
 		<key>Modules/health.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/health.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		i9guVOaOUlOvxWHgWIrrWNhsavU=
+		aaQ1bdiC5ugoCtnEkoLqy6hb2mA=
 		</data>
 		<key>Modules/health.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DRBQC131w3miuLqZm7DDYdIQ10k=
+		RlCY2e9njvr1vbiZJSdAtVGdsxE=
 		</data>
 		<key>Modules/health.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/health.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Q15enkojoFagA6uVc7aZRrbSzC4=
+		edSiEB93heayRFB5xbWhig2mPns=
 		</data>
 		<key>Modules/health.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		2ed44iOvjMg7TaD+0K9Tli+0tys=
+		DsWKdyIzHweCnLIMtt2UAIaHJ/Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dt1sa5JSs9r78nMQcyPF0dooEN3GPJzx0ySgA/HFIrc=
+			LdaRlBrfuY14MPyu9de9KyzWzJfW8gJnx9gJE5uPRZA=
 			</data>
 		</dict>
 		<key>Headers/health-umbrella.h</key>
@@ -84,14 +84,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0VtAROVMnEKNuQeSrawmf9XmM0BWuEEW8zW5W+VMpfE=
+			gn6kad+M0MpaVwNBfreZb4UmaYhdMFozqyO9GvCEe5Y=
 			</data>
 		</dict>
 		<key>Modules/health.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lMX8K/aYA6fJM3irDjSbPEHQtiG9a7FdGkvqw6OLr4c=
+			j2wmpx8lu7fHmOXuVYpTI77OiBLHdErzzh+LlXLiIMc=
 			</data>
 		</dict>
 		<key>Modules/health.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -105,14 +105,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SPyuaRAfSt90fh9MsVzlzy1qX4LSjCTUa50mDzMPjh4=
+			FE0FeXvG7t7U5yfssY8EKM2OieKKocj3QMSvmCnGns8=
 			</data>
 		</dict>
 		<key>Modules/health.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GvR6qsIikpcm7TnOpVKGx4Hr1wTv+XfT4KujOusTlec=
+			vJ+Li7XFpmtcNjOT2ngnae6/xZVoAs4OtyHuZK+0YyU=
 			</data>
 		</dict>
 		<key>Modules/health.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S6mytz8ZyAu1CR7R7if1GCJKIMV+1wnrvWGR+smklg4=
+			y8rrEfVzi8uDi+jowLmxik+TLjtT6DH0XuiLt44/pQ8=
 			</data>
 		</dict>
 		<key>Modules/health.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N9ay3JsIUNBveTaGukHhtqW0atSuSnviBnkASsQNYEs=
+			AzoFsOFnzNiqAgQp/LE7yil9N1NeCDDGdU6b8aDZWNY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

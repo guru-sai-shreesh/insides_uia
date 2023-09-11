@@ -14,17 +14,18 @@
 #import <AuthenticationServices/AuthenticationServices.h>
 #import <Foundation/Foundation.h>
 #import <firebase_core/FLTFirebasePlugin.h>
-#import "messages.g.h"
+#import "firebase_auth_messages.g.h"
 
 @interface FLTFirebaseAuthPlugin
     : FLTFirebasePlugin <FlutterPlugin,
+                         FirebaseAuthHostApi,
+                         FirebaseAuthUserHostApi,
                          MultiFactorUserHostApi,
                          MultiFactoResolverHostApi,
                          ASAuthorizationControllerDelegate,
                          ASAuthorizationControllerPresentationContextProviding>
 
-+ (id)getNSDictionaryFromAuthCredential:(FIRAuthCredential *)authCredential;
 + (NSDictionary *)getNSDictionaryFromUserInfo:(id<FIRUserInfo>)userInfo;
 + (NSMutableDictionary *)getNSDictionaryFromUser:(FIRUser *)user;
-+ (NSDictionary *)getNSDictionaryFromNSError:(NSError *)error;
++ (FlutterError *)convertToFlutterError:(NSError *)error;
 @end

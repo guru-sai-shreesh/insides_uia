@@ -1,10 +1,29 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gurusaishreeshtirumalla/Insides/frontend/Insides/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/1377ecc082df76fa18d0a5c00a428a5e/transformed/core-1.6.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/f5773446f29d96db49c03640b9646f45/transformed/appcompat-1.1.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/b5dcf43da089651093a76bc1fb6b9d83/transformed/core-1.10.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

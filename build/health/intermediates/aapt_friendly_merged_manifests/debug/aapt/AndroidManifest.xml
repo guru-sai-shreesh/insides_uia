@@ -3,7 +3,7 @@
     package="cachet.plugins.health" >
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="16" />
+        android:minSdkVersion="26"
+        android:targetSdkVersion="33" />
 
 </manifest>

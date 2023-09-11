@@ -4,7 +4,7 @@ class AppColors {
   static Color appBarTitle = Colors.white70;
   static Color primaryBackgroundColor =
       Color.fromARGB(255, 49, 112, 179); //spanish blue
-  static Color primaryColor = Color.fromARGB(255, 68, 117, 169);
+  static Color primaryColor = Color.fromARGB(255, 25, 84, 136);
   static Color layerTwoBg = Color(0xFFE9FFF6);
   static Color layerOneBg = Colors.white;
   static Color layerColor = Colors.white70;

@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -29,28 +29,37 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^3.0.1
-  flutter_svg: ^0.22.0
+  google_fonts: ^5.1.0
+  flutter_svg: ^2.0.7
   web_ffi: ^0.7.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  positioned_tap_detector: ^1.0.3
+  positioned_tap_detector_2: ^1.0.4
   provider: ^6.0.2
   shared_preferences: ^2.0.15
-  badges: ^2.0.3
+  badges: ^3.1.1
   simple_gradient_text: ^1.2.3
   url_launcher: ^6.1.5
   permission_handler: ^10.0.0
-  health: ^4.1.1
-  rounded_modal: ^1.0.1
+  health: ^6.0.0
+  flutter_riverpod: ^2.3.10
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/followthemoney1/modal_bottom_sheet.git
+      ref: main
+      path: modal_bottom_sheet
   firebase_core: ^2.2.0
   firebase_auth: ^4.1.2
-  google_sign_in: ^5.4.2
+  google_sign_in: ^6.1.4
   file_picker: ^5.2.2
   flutter_clean_calendar: ^1.1.0
   firebase_analytics: ^10.0.6
+  cloud_firestore: ^4.9.1
+  flutter_facebook_auth: ^6.0.1
+  sign_in_with_apple: ^5.0.0
+  audioplayers: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +77,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/PermissionHandlerEnums.h</key>
 		<data>
-		CCwVYhMpwBFyXnNs6DcuAd3bc1E=
+		xB+I7ZeXdv+WFt/pxSzAbrzCkz0=
 		</data>
 		<key>Headers/PermissionHandlerPlugin.h</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/PermissionStrategy.h</key>
 		<data>
-		Bh9Zu/81xwsPm353B9UHYgYJydw=
+		KbVsI6fDAfXQ47ZdSLPmSdCKXeI=
 		</data>
 		<key>Headers/PhonePermissionStrategy.h</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vCIIX16NMqYQauCAm/dHHedoV8A=
+		4NAim0plOYOTAu4ZgLmAt0RjBOM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -213,11 +213,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CCwVYhMpwBFyXnNs6DcuAd3bc1E=
+			xB+I7ZeXdv+WFt/pxSzAbrzCkz0=
 			</data>
 			<key>hash2</key>
 			<data>
-			M4VoUqe23jCgfHaXE6SurOBbpLPgCXV90gG6TL0XfX0=
+			trhUUcjS3kY33rnWUsBZWjwrfjGYx2fC3+h6F5QZ5PM=
 			</data>
 		</dict>
 		<key>Headers/PermissionHandlerPlugin.h</key>
@@ -246,11 +246,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Bh9Zu/81xwsPm353B9UHYgYJydw=
+			KbVsI6fDAfXQ47ZdSLPmSdCKXeI=
 			</data>
 			<key>hash2</key>
 			<data>
-			3TRUgQXcvv6NSsGq+Z/uzCI67Fhv59tNaXt6zPc1iF4=
+			/E5wGBz+JGamPWt3Uj0MNJHYGAB787Q7+FotUfFvcbQ=
 			</data>
 		</dict>
 		<key>Headers/PhonePermissionStrategy.h</key>

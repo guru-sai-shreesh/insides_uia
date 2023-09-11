@@ -56,6 +56,8 @@ int attr swipeRefreshLayoutProgressSpinnerBackgroundColor 0x0
 int attr ttcIndex 0x0
 int color androidx_core_ripple_material_light 0x0
 int color androidx_core_secondary_text_default_material_light 0x0
+int color call_notification_answer_color 0x0
+int color call_notification_decline_color 0x0
 int color common_google_signin_btn_text_dark 0x0
 int color common_google_signin_btn_text_dark_default 0x0
 int color common_google_signin_btn_text_dark_disabled 0x0
@@ -118,6 +120,12 @@ int drawable common_google_signin_btn_text_light_normal 0x0
 int drawable common_google_signin_btn_text_light_normal_background 0x0
 int drawable googleg_disabled_color_18 0x0
 int drawable googleg_standard_color_18 0x0
+int drawable ic_call_answer 0x0
+int drawable ic_call_answer_low 0x0
+int drawable ic_call_answer_video 0x0
+int drawable ic_call_answer_video_low 0x0
+int drawable ic_call_decline 0x0
+int drawable ic_call_decline_low 0x0
 int drawable notification_action_background 0x0
 int drawable notification_bg 0x0
 int drawable notification_bg_low 0x0
@@ -126,6 +134,7 @@ int drawable notification_bg_low_pressed 0x0
 int drawable notification_bg_normal 0x0
 int drawable notification_bg_normal_pressed 0x0
 int drawable notification_icon_background 0x0
+int drawable notification_oversize_large_icon_bg 0x0
 int drawable notification_template_icon_bg 0x0
 int drawable notification_template_icon_low_bg 0x0
 int drawable notification_tile_bg 0x0
@@ -186,6 +195,7 @@ int id clip_horizontal 0x0
 int id clip_vertical 0x0
 int id dark 0x0
 int id dialog_button 0x0
+int id edit_text_id 0x0
 int id end 0x0
 int id end_padder 0x0
 int id fill 0x0
@@ -193,15 +203,12 @@ int id fill_horizontal 0x0
 int id fill_vertical 0x0
 int id forever 0x0
 int id fragment_container_view_tag 0x0
+int id hide_ime_id 0x0
 int id icon 0x0
 int id icon_group 0x0
 int id icon_only 0x0
 int id info 0x0
 int id italic 0x0
-int id item1 0x0
-int id item2 0x0
-int id item3 0x0
-int id item4 0x0
 int id left 0x0
 int id light 0x0
 int id line1 0x0
@@ -215,6 +222,7 @@ int id normal 0x0
 int id notification_background 0x0
 int id notification_main_column 0x0
 int id notification_main_column_container 0x0
+int id report_drawn 0x0
 int id right 0x0
 int id right_icon 0x0
 int id right_side 0x0
@@ -251,6 +259,8 @@ int integer cancel_button_image_alpha 0x0
 int integer google_play_services_version 0x0
 int integer status_bar_notification_info_maxnum 0x0
 int layout custom_dialog 0x0
+int layout ime_base_split_test_activity 0x0
+int layout ime_secondary_split_test_activity 0x0
 int layout notification_action 0x0
 int layout notification_action_tombstone 0x0
 int layout notification_media_action 0x0
@@ -266,8 +276,13 @@ int layout notification_template_media 0x0
 int layout notification_template_media_custom 0x0
 int layout notification_template_part_chronometer 0x0
 int layout notification_template_part_time 0x0
-int menu example_menu 0x0
-int menu example_menu2 0x0
+int string call_notification_answer_action 0x0
+int string call_notification_answer_video_action 0x0
+int string call_notification_decline_action 0x0
+int string call_notification_hang_up_action 0x0
+int string call_notification_incoming_text 0x0
+int string call_notification_ongoing_text 0x0
+int string call_notification_screening_text 0x0
 int string common_google_play_services_enable_button 0x0
 int string common_google_play_services_enable_text 0x0
 int string common_google_play_services_enable_title 0x0

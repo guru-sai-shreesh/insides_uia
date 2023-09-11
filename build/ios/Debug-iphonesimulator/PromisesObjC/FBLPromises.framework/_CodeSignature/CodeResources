@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/FBLPromise+Retry.h</key>
 		<data>
-		yWcTgblFfFp1WTKDOiSPZ5jDxNQ=
+		EFBZkIULq7mo/1LX3HSsRl51Fhw=
 		</data>
 		<key>Headers/FBLPromise+Testing.h</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Headers/FBLPromise.h</key>
 		<data>
-		66aJuIe5lIRcT8lc2CR4XlzUCqA=
+		7OfQzgwmGOgsO/CHeNSkTs6YP2g=
 		</data>
 		<key>Headers/FBLPromiseError.h</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		O8GNLFwrR2rCeORiJP1FxKvv0K8=
+		kOrza4Gx9URUJlUQTbBrkK/eZKQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -228,11 +228,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yWcTgblFfFp1WTKDOiSPZ5jDxNQ=
+			EFBZkIULq7mo/1LX3HSsRl51Fhw=
 			</data>
 			<key>hash2</key>
 			<data>
-			Va6IWZOaB2Gi/utF/TdEGwXYqFYHunwUXo4DNOCGyuc=
+			onMjxab1k7BI/BmEl5YQXwuaYLZwgEh/ERMPIZ5utlY=
 			</data>
 		</dict>
 		<key>Headers/FBLPromise+Testing.h</key>
@@ -294,11 +294,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			66aJuIe5lIRcT8lc2CR4XlzUCqA=
+			7OfQzgwmGOgsO/CHeNSkTs6YP2g=
 			</data>
 			<key>hash2</key>
 			<data>
-			MD1VrgE/xaO9Oy+HbINsjj3NdgjHGD0vqLUkZ9TEkgQ=
+			8zo1VQB3l2nvOKVHu1ra+QRd1asb8+/pFf9rbETehMk=
 			</data>
 		</dict>
 		<key>Headers/FBLPromiseError.h</key>
