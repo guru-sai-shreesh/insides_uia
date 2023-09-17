@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insides/features/dashboard/dashboard.dart';
 import 'package:insides/features/fitness/views/fitness.dart';
-import 'package:insides/features/fitness/components/health_insights.dart';
+import 'package:insides/features/fitness/views/health_insights.dart';
 import 'package:insides/features/mindful/mindful.dart';
 import 'package:insides/features/prescriptions/prescriptions.dart';
 import 'package:insides/features/profile/profile.dart';

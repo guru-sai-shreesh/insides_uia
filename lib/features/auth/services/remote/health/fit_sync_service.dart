@@ -27,7 +27,6 @@ final permissions = [
 ];
 
 HealthFactory health = HealthFactory();
-// class FitSync {
 Future<bool> getHealthAuth() async {
   await health.revokePermissions();
   final healthAuthGrant =
@@ -38,10 +37,3 @@ Future<bool> getHealthAuth() async {
   // await Permission.activityRecognition.request();
   // await Permission.location.request();
 }
-
-// }
-
-
-
-
-

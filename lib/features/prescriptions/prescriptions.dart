@@ -3,6 +3,7 @@ import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insides/main.dart';
 import 'package:flutter_clean_calendar/clean_calendar_event.dart';
+import 'package:insides/model/colors.dart';
 
 class Prescriptions extends StatefulWidget {
   const Prescriptions({Key? key}) : super(key: key);
@@ -17,22 +18,22 @@ class _PrescriptionsState extends State<Prescriptions> {
   Map<DateTime, List<CleanCalendarEvent>> event = {
     DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day): [
       CleanCalendarEvent(
-        'Log 1',
+        'Paracetamol 1mg',
         startTime: DateTime(DateTime.now().year, DateTime.now().month,
             DateTime.now().day, 7, 0),
         endTime: DateTime(DateTime.now().year, DateTime.now().month,
             DateTime.now().day, 10, 0),
-        description: 'First log',
-        color: Colors.pink,
+        description: 'daily',
+        color: AppColors.primaryColor,
       ),
       CleanCalendarEvent(
-        'Log 2',
+        'Nicotin',
         startTime: DateTime(DateTime.now().year, DateTime.now().month,
             DateTime.now().day, 7, 0),
         endTime: DateTime(DateTime.now().year, DateTime.now().month,
             DateTime.now().day, 10, 0),
-        description: 'Second log',
-        color: Colors.pink,
+        description: 'daily',
+        color: AppColors.primaryColor,
       ),
     ],
   };
@@ -81,22 +82,21 @@ class _PrescriptionsState extends State<Prescriptions> {
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       child: Calendar(
-                        startOnMonday: true,
-                        //random colours
-                        selectedColor: Colors.blue,
-                        todayColor: Colors.orange,
-                        eventColor: Colors.red,
-                        eventDoneColor: Colors.yellow,
-                        bottomBarColor: Colors.brown,
-                        dayOfWeekStyle: TextStyle(color: Colors.green),
-                        bottomBarTextStyle: TextStyle(color: Colors.white),
+                        bottomBarColor: Colors.transparent,
+                        selectedColor: AppColors.primaryColor,
+                        todayColor: AppColors.primaryColor,
+                        // eventColor: AppColors.primaryColor,
+                        // eventDoneColor: Colors.yellow,
+                        dayOfWeekStyle:
+                            TextStyle(color: AppColors.primaryColor),
+                        bottomBarTextStyle: TextStyle(color: Colors.black),
 
                         events: event,
-                        isExpanded: true,
+                        // isExpanded: true,
                         isExpandable: true,
                         hideArrows: false,
                         hideBottomBar: false,
-                        weekDays: [
+                        weekDays: const [
                           'Mon',
                           'Tue',
                           'Wed',

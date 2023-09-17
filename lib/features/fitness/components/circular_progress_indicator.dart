@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:insides/model/colors.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 
-class RadialProgress extends StatelessWidget {
+class RadialProgressComponent extends StatelessWidget {
   final double progress;
-  final int goal;
-  final int stepsWalked;
+  final String secondaryText;
+  final String primaryText;
   final Color color;
   final double height;
   final double width;
 
-  const RadialProgress({
+  const RadialProgressComponent({
     Key? key,
     required this.progress,
-    required this.stepsWalked,
-    required this.goal,
     required this.color,
     required this.height,
     required this.width,
+    required this.secondaryText,
+    required this.primaryText,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class RadialProgress extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "$stepsWalked/$goal",
+                    primaryText,
                     style: TextStyle(
                       fontSize: minSide * 0.1,
                       fontWeight: FontWeight.w700,
@@ -45,7 +45,7 @@ class RadialProgress extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Steps Walked",
+                    secondaryText,
                     style: TextStyle(
                       fontSize: minSide * 0.05,
                       fontWeight: FontWeight.w500,

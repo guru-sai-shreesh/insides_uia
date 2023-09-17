@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insides/features/fitness/components/fitness_card.dart';
 import 'package:insides/features/fitness/services/local/fitness_shared_prefs.dart';
-import 'package:insides/features/fitness/components/health_insights.dart';
+import 'package:insides/features/fitness/views/health_insights.dart';
 import 'package:insides/model/colors.dart';
 import 'package:insides/features/fitness/components/circular_progress_indicator.dart';
 
@@ -67,10 +67,12 @@ class _FitnessState extends ConsumerState<Fitness> {
             : double.parse(weight.value.toString()).toStringAsFixed(2),
         heartRate: heartRate == null ? "--" : heartRate.value.toString(),
         steps: steps == null ? "--" : steps.toString(),
-        bloodPressureSystolic:
-            bpSystolic == null ? "--" : bpSystolic.value.toString(),
-        bloodPressureDiastolic:
-            bpDiastolic == null ? "--" : bpDiastolic.value.toString(),
+        bloodPressureSystolic: bpSystolic == null
+            ? "--"
+            : double.parse(bpSystolic.value.toString()).toStringAsFixed(0),
+        bloodPressureDiastolic: bpDiastolic == null
+            ? "--"
+            : double.parse(bpDiastolic.value.toString()).toStringAsFixed(0),
         wSteps: wSteps == null ? "--" : wSteps.toString(),
         timeStamp: DateTime.now(),
       );
@@ -132,7 +134,6 @@ class _FitnessState extends ConsumerState<Fitness> {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.notifications_outlined)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.add)),
                       ],
                     ),
                     SliverList(
@@ -150,28 +151,23 @@ class _FitnessState extends ConsumerState<Fitness> {
                             ),
                           ),
                           Container(
-                            height: 190,
-                            width: 190,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25)),
-                            margin:
-                                EdgeInsets.only(left: 15, right: 15, top: 15),
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              child: RadialProgress(
-                                progress: healthData.steps != "--"
-                                    ? double.parse(healthData.steps) / 600
-                                    : 0,
-                                stepsWalked: healthData.steps != "--"
-                                    ? double.parse(healthData.steps).toInt()
-                                    : 0,
-                                goal: 600,
-                                color: AppColors.cardcolor,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
-                                width: MediaQuery.of(context).size.width * 0.4,
-                              ),
+                            padding: EdgeInsets.all(15),
+                            alignment: Alignment.centerLeft,
+                            child: RadialProgressComponent(
+                              progress: healthData.steps != "--"
+                                  ? double.parse(healthData.steps) / 600
+                                  : 0,
+                              primaryText: healthData.steps != "--"
+                                  ? double.parse(healthData.steps)
+                                          .toInt()
+                                          .toString() +
+                                      "/" +
+                                      600.toString()
+                                  : 0.toString() + "/" + 600.toString(),
+                              color: AppColors.cardcolor,
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              secondaryText: 'Steps Walked',
                             ),
                           ),
                           Padding(
@@ -185,7 +181,7 @@ class _FitnessState extends ConsumerState<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Steps Count",
                             cardData: healthData.wSteps.toString(),
@@ -198,16 +194,15 @@ class _FitnessState extends ConsumerState<Fitness> {
                             dateTime: healthData.timeStamp,
                             cardIcon: Icons.run_circle_rounded,
                             page: FitnessInsightsScreen(
+                              healthInsightType: HealthInsightType.steps,
                               title: "Walking",
-                              todayFetchFunction:
-                                  FetchHealthData().fetchTodayStepsData,
                               weeklyFetchFunction:
                                   FetchHealthData().fetchWeeklyStepsData,
                               monthlyFetchFunction:
                                   FetchHealthData().fetchMonthlyHeartRateData,
                             ),
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Calories Burned",
                             cardData: "280",
@@ -226,7 +221,7 @@ class _FitnessState extends ConsumerState<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Heart Rate",
                             cardData: healthData.heartRate,
@@ -235,22 +230,34 @@ class _FitnessState extends ConsumerState<Fitness> {
                             cardIcon: Icons.favorite,
                             dateTime: healthData.timeStamp,
                             page: FitnessInsightsScreen(
+                              healthInsightType: HealthInsightType.heartRate,
                               title: "Heart Rate",
-                              todayFetchFunction:
-                                  FetchHealthData().fetchTodayHeartRateData,
                               weeklyFetchFunction:
                                   FetchHealthData().fetchWeeklyHeartRateData,
                               monthlyFetchFunction:
                                   FetchHealthData().fetchMonthlyHeartRateData,
                             ),
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Blood Presure",
                             cardData:
                                 "${healthData.bloodPressureSystolic}/${healthData.bloodPressureDiastolic}",
                             cardDescription: "Normal",
                             dateTime: healthData.timeStamp,
+                            page: FitnessInsightsScreen(
+                              healthInsightType:
+                                  HealthInsightType.bloodPreasure,
+                              title: "Blood Presure",
+                              weeklyFetchFunction:
+                                  FetchHealthData().fetchWeeklyBPSystolic,
+                              weeklyFetchFunction2:
+                                  FetchHealthData().fetchWeeklyBPDiastolic,
+                              monthlyFetchFunction:
+                                  FetchHealthData().fetchWeeklyBPSystolic,
+                              monthlyFetchFunction2:
+                                  FetchHealthData().fetchMonthlyBPDiastolic,
+                            ),
                           ),
                           Padding(
                             padding:
@@ -263,7 +270,7 @@ class _FitnessState extends ConsumerState<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "BMI",
                             cardData: (healthData.height != "--" ||
@@ -275,7 +282,7 @@ class _FitnessState extends ConsumerState<Fitness> {
                             cardDescription: "Normal",
                             dateTime: healthData.timeStamp,
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Height",
                             cardData: healthData.height != "--"
@@ -300,7 +307,7 @@ class _FitnessState extends ConsumerState<Fitness> {
                             cardSecondaryData2: "in",
                             dateTime: healthData.timeStamp,
                           ),
-                          FitnessCard(
+                          FitnessCardComponent(
                             cardColor: AppColors.cardcolor,
                             cardTitle: "Weight",
                             cardData: healthData.weight,

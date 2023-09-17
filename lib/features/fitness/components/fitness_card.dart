@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class FitnessCard extends StatefulWidget {
+class FitnessCardComponent extends StatefulWidget {
   final Color cardColor;
   final String cardTitle;
   final IconData? cardIcon;
@@ -14,7 +14,7 @@ class FitnessCard extends StatefulWidget {
   final Widget? page;
   final double? progress;
   final DateTime dateTime;
-  const FitnessCard(
+  const FitnessCardComponent(
       {super.key,
       required this.cardColor,
       required this.cardTitle,
@@ -29,10 +29,10 @@ class FitnessCard extends StatefulWidget {
       this.cardSecondaryData2});
 
   @override
-  State<FitnessCard> createState() => _FitnessCardState();
+  State<FitnessCardComponent> createState() => _FitnessCardComponentState();
 }
 
-class _FitnessCardState extends State<FitnessCard> {
+class _FitnessCardComponentState extends State<FitnessCardComponent> {
   String formatDateTime(DateTime dateTime) {
     final now = DateTime.now();
     final difference = now.difference(dateTime);

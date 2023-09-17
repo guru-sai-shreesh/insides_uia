@@ -65,6 +65,7 @@ class FetchHealthData {
     final now = DateTime.now();
     final yesterday = now.subtract(Duration(days: 365));
     try {
+      await health.requestAuthorization(types);
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
       print(healthData.last);
@@ -87,6 +88,7 @@ class FetchHealthData {
     final now = DateTime.now();
     final yesterday = now.subtract(Duration(days: 365));
     try {
+      await health.requestAuthorization(types);
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
       print(healthData.last);
@@ -109,6 +111,7 @@ class FetchHealthData {
     final now = DateTime.now();
     final yesterday = now.subtract(Duration(days: 365));
     try {
+      await health.requestAuthorization(types);
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
       print(healthData.last);
@@ -131,9 +134,9 @@ class FetchHealthData {
     final now = DateTime.now();
     final yesterday = now.subtract(Duration(days: 365));
     try {
+      await health.requestAuthorization(types);
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
-      print(healthData.last);
       return healthData.last;
     } catch (error) {
       print("Exception in getHealthDataFromTypes: $error");
@@ -153,9 +156,9 @@ class FetchHealthData {
     final now = DateTime.now();
     final yesterday = now.subtract(Duration(days: 365));
     try {
+      await health.requestAuthorization(types);
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
-      print(healthData.first);
       return healthData.first;
     } catch (error) {
       print("Exception in getHealthDataFromTypes: $error");
@@ -178,6 +181,7 @@ class FetchHealthData {
 
     // if (requested) {
     try {
+      await health.requestAuthorization(types);
       // fetch health data
       List<HealthDataPoint> healthData =
           await health.getHealthDataFromTypes(yesterday, now, types);
@@ -197,24 +201,6 @@ class FetchHealthData {
     //   print("Authorization not granted");
     // }
     return _healthDataList;
-  }
-
-  Future<List<HealthDataPoint>> fetchTodayHeartRateData() async {
-    final today = DateTime.now();
-    final lastWeek = today.subtract(Duration(days: 7));
-    final lastMonth = today.subtract(Duration(days: 30));
-
-    try {
-      await health.requestAuthorization([HealthDataType.HEART_RATE]);
-      final heartRateData = await health.getHealthDataFromTypes(
-          DateTime(today.year, today.month, today.day),
-          today,
-          [HealthDataType.HEART_RATE]);
-      return heartRateData;
-    } catch (e) {
-      print('Error fetching heart rate data: $e');
-      return [];
-    }
   }
 
   Future<List<HealthDataPoint>> fetchWeeklyHeartRateData() async {
@@ -249,24 +235,6 @@ class FetchHealthData {
     }
   }
 
-  Future<List<HealthDataPoint>> fetchTodayStepsData() async {
-    final today = DateTime.now();
-    final lastWeek = today.subtract(Duration(days: 7));
-    final lastMonth = today.subtract(Duration(days: 30));
-
-    try {
-      await health.requestAuthorization([HealthDataType.STEPS]);
-      final heartRateData = await health.getHealthDataFromTypes(
-          DateTime(today.year, today.month, today.day),
-          today,
-          [HealthDataType.STEPS]);
-      return heartRateData;
-    } catch (e) {
-      print('Error fetching steps data: $e');
-      return [];
-    }
-  }
-
   Future<List<HealthDataPoint>> fetchWeeklyStepsData() async {
     final today = DateTime.now();
     final lastWeek = today.subtract(Duration(days: 7));
@@ -295,6 +263,106 @@ class FetchHealthData {
       return heartRateData;
     } catch (e) {
       print('Error fetching steps data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint?>> fetchWeeklyBPSystolic() async {
+    final types = [
+      HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
+    ];
+
+    // with coresponsing permissions
+    final permissions = [
+      HealthDataAccess.READ,
+    ];
+
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization(types);
+      List<HealthDataPoint> healthData =
+          await health.getHealthDataFromTypes(lastWeek, today, types);
+      return healthData;
+    } catch (error) {
+      print("Exception in getHealthDataFromTypes: $error");
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint?>> fetchMonthlyBPSystolic() async {
+    final types = [
+      HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
+    ];
+
+    // with coresponsing permissions
+    final permissions = [
+      HealthDataAccess.READ,
+    ];
+
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization(types);
+      List<HealthDataPoint> healthData =
+          await health.getHealthDataFromTypes(lastMonth, today, types);
+      return healthData;
+    } catch (error) {
+      print("Exception in getHealthDataFromTypes: $error");
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint?>> fetchWeeklyBPDiastolic() async {
+    final types = [
+      HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
+    ];
+
+    // with coresponsing permissions
+    final permissions = [
+      HealthDataAccess.READ,
+    ];
+
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization(types);
+      List<HealthDataPoint> healthData =
+          await health.getHealthDataFromTypes(lastWeek, today, types);
+      return healthData;
+    } catch (error) {
+      print("Exception in getHealthDataFromTypes: $error");
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint?>> fetchMonthlyBPDiastolic() async {
+    final types = [
+      HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
+    ];
+
+    // with coresponsing permissions
+    final permissions = [
+      HealthDataAccess.READ,
+    ];
+
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization(types);
+      List<HealthDataPoint> healthData =
+          await health.getHealthDataFromTypes(lastMonth, today, types);
+      return healthData;
+    } catch (error) {
+      print("Exception in getHealthDataFromTypes: $error");
       return [];
     }
   }
