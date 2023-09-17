@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "1cb87e468ba2610fffd430b7625eef12bb31e7ac9304508d92d8ea14fb40589e"
+build_start_time: [1694887691, 576601028]
+build_end_time: [1694887702, 368729114]
+inputs:
+  "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/url_launcher_macos-3.0.6/macos/Classes/UrlLauncherPlugin.swift": [1692847267, 719233512]
+  "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/url_launcher_macos-3.0.6/macos/Classes/messages.g.swift": [1692847267, 720816612]

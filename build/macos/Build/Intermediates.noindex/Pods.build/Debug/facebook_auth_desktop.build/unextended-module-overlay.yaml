@@ -1,0 +1,14 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/facebook_auth_desktop/facebook_auth_desktop.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Intermediates.noindex/Pods.build/Debug/facebook_auth_desktop.build/unextended-module.modulemap",
+    }]
+  }]
+}

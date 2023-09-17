@@ -19,9 +19,15 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   // late String photoUrl;
-  late UserModel user;
+  late final UserModel user;
 
-  Future<void> fetchUserData() async {
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  Future<void> _fetchUserData() async {
     user = (await AuthSharedPreferences.getUserDataFromPrefs())!;
   }
 
@@ -63,7 +69,7 @@ class _ProfileState extends State<Profile> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         FutureBuilder(
-                            future: fetchUserData(),
+                            future: _fetchUserData(),
                             builder: (context, snapshot) {
                               return Column(
                                 children: [

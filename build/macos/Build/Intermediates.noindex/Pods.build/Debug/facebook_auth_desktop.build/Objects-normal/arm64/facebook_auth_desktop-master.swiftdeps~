@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "06c120a497d653a6aa5b77eef3bf10bd819d5dac947e3a4a2dca08116d888fec"
+build_start_time: [1694887699, 204952001]
+build_end_time: [1694887699, 223908901]
+inputs:
+  ? "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/facebook_auth_desktop-1.0.0/macos/Classes/FacebookAuthDesktopPlugin.swift"
+  : !private [1694013107, 24538993]

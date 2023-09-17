@@ -1,89 +1,110 @@
 import 'dart:async';
 
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health/health.dart';
+import 'package:insides/features/fitness/components/fitness_card.dart';
 import 'package:insides/features/fitness/services/local/fitness_shared_prefs.dart';
+import 'package:insides/features/fitness/components/health_insights.dart';
 import 'package:insides/model/colors.dart';
-import 'package:insides/components/circular_progress_indicator.dart';
+import 'package:insides/features/fitness/components/circular_progress_indicator.dart';
 
-import '../model/heath_data.dart';
+import '../model/health_data.dart';
 import '../services/remote/fetch_health_data.dart';
+import '../state/fitness_state.dart';
 
-class Fitness extends StatefulWidget {
+class Fitness extends ConsumerStatefulWidget {
   const Fitness({Key? key}) : super(key: key);
 
   @override
-  State<Fitness> createState() => _FitnessState();
+  ConsumerState<Fitness> createState() => _FitnessState();
 }
 
 int count = 0;
 
-class _FitnessState extends State<Fitness> {
-  // int? steps;
-  // int? wSteps;
-  // HealthDataPoint? height;
-  // HealthDataPoint? weight;
-  // HealthDataPoint? heart_rate;
-  // HealthDataPoint? bp_systolic;
-  // HealthDataPoint? bp_diastolic;
-  // Timer? classifier_timer;
-  late HealthDataModel healthData;
+class _FitnessState extends ConsumerState<Fitness> {
+  late Timer _timer;
+  bool isDataLoaded = false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // classifier_timer = Timer.periodic(Duration(seconds: 2), (timer) async {
-    //   _fetchData();
-    // }
-    // );
+    // Start the timer to fetch data periodically.
+    _fetchData(ref);
+    _timer = Timer.periodic(Duration(seconds: 60), (timer) {
+      _fetchData(ref);
+    });
+    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+      setState(() {});
+    });
   }
 
-  _fetchData() async {
-    // Fetch health data
-    final height = await FetchHealthData().fetchHeight();
-    final weight = await FetchHealthData().fetchWeight();
-    final heartRate = await FetchHealthData().fetchHR();
-    final wSteps = await FetchHealthData().fetchWNoStep();
-    final steps = await FetchHealthData().fetchNoStep();
-    final bpSystolic = await FetchHealthData().bloodPreasureSystolic();
-    final bpDiastolic = await FetchHealthData().bloodPreasureDiastolic();
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed to avoid memory leaks.
+    _timer.cancel();
+    super.dispose();
+  }
 
-    // Create a HealthDataModel object
-    healthData = HealthDataModel(
-      height: height == null
-          ? "--"
-          : double.parse(height.value.toString()).toStringAsFixed(2),
-      weight: weight == null
-          ? "--"
-          : double.parse(weight.value.toString()).toStringAsFixed(2),
-      heartRate: heartRate == null ? "--" : heartRate.value.toString(),
-      steps: steps == null ? "--" : steps.toString(),
-      bloodPressureSystolic:
-          bpSystolic == null ? "--" : bpSystolic.value.toString(),
-      bloodPressureDiastolic:
-          bpDiastolic == null ? "--" : bpDiastolic.value.toString(),
-      wSteps: wSteps == null ? "--" : wSteps.toString(),
-    );
+  Future<void> _fetchData(ref) async {
+    try {
+      // Fetch health data
+      final height = await FetchHealthData().fetchHeight();
+      final weight = await FetchHealthData().fetchWeight();
+      final heartRate = await FetchHealthData().fetchHR();
+      final wSteps = await FetchHealthData().fetchWNoStep();
+      final steps = await FetchHealthData().fetchNoStep();
+      final bpSystolic = await FetchHealthData().bloodPreasureSystolic();
+      final bpDiastolic = await FetchHealthData().bloodPreasureDiastolic();
 
-    // Cache the health data
-    await FitnessSharedPreferences.cacheHealthData(healthData);
+      final newHealthData = HealthDataModel(
+        height: height == null
+            ? "--"
+            : double.parse(height.value.toString()).toStringAsFixed(2),
+        weight: weight == null
+            ? "--"
+            : double.parse(weight.value.toString()).toStringAsFixed(2),
+        heartRate: heartRate == null ? "--" : heartRate.value.toString(),
+        steps: steps == null ? "--" : steps.toString(),
+        bloodPressureSystolic:
+            bpSystolic == null ? "--" : bpSystolic.value.toString(),
+        bloodPressureDiastolic:
+            bpDiastolic == null ? "--" : bpDiastolic.value.toString(),
+        wSteps: wSteps == null ? "--" : wSteps.toString(),
+        timeStamp: DateTime.now(),
+      );
 
-    // Return a result (if needed)
-    return 1;
+      // Update the healthData using the provider
+      ref.read(healthDataProvider.notifier).state = newHealthData;
+      // Cache the health data
+      await FitnessSharedPreferences.cacheHealthData(newHealthData);
+
+      // Set the flag to true when data is loaded
+      setState(() {
+        isDataLoaded = true;
+      });
+    } catch (e) {
+      // Handle errors gracefully, log or display error messages.
+      print('Error fetching health data: $e');
+
+      // Use cached data when internet is not available
+      final cachedData = await FitnessSharedPreferences.getCachedHealthData();
+      if (cachedData != null) {
+        ref.read(healthDataProvider.notifier).state = cachedData;
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final healthData = ref.watch(healthDataProvider);
+    print(healthData.height);
+
     return Container(
-      color: Colors.white,
-      child: FutureBuilder(
-          future: _fetchData(),
-          builder: (BuildContext context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Scaffold(
+        color: Colors.white,
+        child: isDataLoaded
+            ? Scaffold(
                 backgroundColor: Colors.transparent,
                 body: CustomScrollView(
                   physics: BouncingScrollPhysics(),
@@ -133,34 +154,29 @@ class _FitnessState extends State<Fitness> {
                             width: 190,
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                // color: AppColors.badgecolor,
                                 borderRadius: BorderRadius.circular(25)),
-                            margin: EdgeInsets.only(left: 15, right: 15),
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 0.0),
-                                    child: RadialProgress(
-                                      height: 160.0,
-                                      width: 160.0,
-                                      progress: healthData.steps != "--"
-                                          ? double.parse(healthData.steps)
-                                          : 0,
-                                      steps_left: healthData.steps != "--"
-                                          ? 200 -
-                                              double.parse(healthData.steps)
-                                                  .toInt()
-                                          : 200,
-                                    ),
-                                  ),
-                                ],
+                            margin:
+                                EdgeInsets.only(left: 15, right: 15, top: 15),
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: RadialProgress(
+                                progress: healthData.steps != "--"
+                                    ? double.parse(healthData.steps) / 600
+                                    : 0,
+                                stepsWalked: healthData.steps != "--"
+                                    ? double.parse(healthData.steps).toInt()
+                                    : 0,
+                                goal: 600,
+                                color: AppColors.cardcolor,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.4,
+                                width: MediaQuery.of(context).size.width * 0.4,
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsets.only(left: 15, top: 10, right: 15),
+                            padding: const EdgeInsets.only(
+                                left: 15, top: 10, right: 15),
                             child: Text(
                               "ACTIVITY",
                               style: GoogleFonts.openSans(
@@ -169,230 +185,35 @@ class _FitnessState extends State<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          Card(
-                            margin: EdgeInsets.all(10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 120,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "STEPS COUNT",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Show All",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.only(left: 15, top: 10),
-                                    width: 300,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: LinearProgressIndicator(
-                                        value: (healthData.steps != "--"
-                                                ? double.parse(healthData.steps)
-                                                    .toInt()
-                                                : 0) /
-                                            1000,
-                                        valueColor: AlwaysStoppedAnimation(
-                                            Colors.white),
-                                        backgroundColor:
-                                            Colors.white.withOpacity(0.2),
-                                      ),
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 0, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: healthData.wSteps
-                                                          .toString(),
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 34,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: ' of 1400 Steps',
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 15, top: 0, right: 15),
-                                            child: Text(
-                                              'Last 7 days',
-                                              style: GoogleFonts.openSans(
-                                                  fontSize: 14,
-                                                  color: Colors.white60,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 30),
-                                        child: Icon(
-                                          Icons.run_circle,
-                                          color: Colors.white,
-                                          size: 40,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Steps Count",
+                            cardData: healthData.wSteps.toString(),
+                            progress: (healthData.wSteps != "--"
+                                    ? double.parse(healthData.wSteps).toInt()
+                                    : 0) /
+                                1000,
+                            cardSecondaryData: "Steps",
+                            cardDescription: "Last 7 days",
+                            dateTime: healthData.timeStamp,
+                            cardIcon: Icons.run_circle_rounded,
+                            page: FitnessInsightsScreen(
+                              title: "Walking",
+                              todayFetchFunction:
+                                  FetchHealthData().fetchTodayStepsData,
+                              weeklyFetchFunction:
+                                  FetchHealthData().fetchWeeklyStepsData,
+                              monthlyFetchFunction:
+                                  FetchHealthData().fetchMonthlyHeartRateData,
                             ),
                           ),
-                          Card(
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 110,
-                              width: MediaQuery.of(context).size.width,
-                              child: Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 15, top: 10, right: 15),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "Calories Burned",
-                                            style: GoogleFonts.openSans(
-                                                fontSize: 15,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          Spacer(),
-                                          Text(
-                                            "Just Now",
-                                            style: GoogleFonts.openSans(
-                                                fontSize: 14,
-                                                color: Colors.white60,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: Colors.white,
-                                            size: 12,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                                padding: EdgeInsets.only(
-                                                    left: 15,
-                                                    top: 2,
-                                                    right: 15),
-                                                child: RichText(
-                                                  text: TextSpan(
-                                                    style: GoogleFonts.openSans(
-                                                        fontSize: 15,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                    children: <TextSpan>[
-                                                      TextSpan(
-                                                        text: '284 ',
-                                                        style: GoogleFonts
-                                                            .openSans(
-                                                                fontSize: 34,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      ),
-                                                      TextSpan(
-                                                        text: 'Cal',
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, right: 15),
-                                              child: Text(
-                                                'Today',
-                                                style: GoogleFonts.openSans(
-                                                    fontSize: 14,
-                                                    color: Colors.white60,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Calories Burned",
+                            cardData: "280",
+                            cardSecondaryData: "CAL",
+                            cardDescription: "Today",
+                            dateTime: healthData.timeStamp,
                           ),
                           Padding(
                             padding:
@@ -405,237 +226,31 @@ class _FitnessState extends State<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          Card(
-                            margin: EdgeInsets.all(10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 110,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "HEART RATE",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Just Now",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 2, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text:
-                                                          healthData.heartRate,
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 32,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: " BPM",
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 15, top: 0, right: 15),
-                                            child: Text(
-                                              'NORMAL',
-                                              style: GoogleFonts.openSans(
-                                                  fontSize: 14,
-                                                  color: Colors.white60,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 30),
-                                        child: Icon(
-                                          Icons.favorite,
-                                          color: Colors.white,
-                                          size: 40,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Heart Rate",
+                            cardData: healthData.heartRate,
+                            cardSecondaryData: "BPM",
+                            cardDescription: "Normal",
+                            cardIcon: Icons.favorite,
+                            dateTime: healthData.timeStamp,
+                            page: FitnessInsightsScreen(
+                              title: "Heart Rate",
+                              todayFetchFunction:
+                                  FetchHealthData().fetchTodayHeartRateData,
+                              weeklyFetchFunction:
+                                  FetchHealthData().fetchWeeklyHeartRateData,
+                              monthlyFetchFunction:
+                                  FetchHealthData().fetchMonthlyHeartRateData,
                             ),
                           ),
-                          Card(
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 110,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "BLOOD PRESURE",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Just Now",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 2, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: healthData
-                                                          .bloodPressureSystolic,
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 32,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: '/',
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 32,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: healthData
-                                                          .bloodPressureDiastolic,
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 32,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 15, top: 0, right: 15),
-                                            child: Text(
-                                              'NORMAL',
-                                              style: GoogleFonts.openSans(
-                                                  fontSize: 14,
-                                                  color: Colors.white60,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.only(right: 30),
-                                      //   child: Icon(
-                                      //     Icons.favorite,
-                                      //     color: Colors.white,
-                                      //     size: 40,
-                                      //   ),
-                                      // )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Blood Presure",
+                            cardData:
+                                "${healthData.bloodPressureSystolic}/${healthData.bloodPressureDiastolic}",
+                            cardDescription: "Normal",
+                            dateTime: healthData.timeStamp,
                           ),
                           Padding(
                             padding:
@@ -648,338 +263,56 @@ class _FitnessState extends State<Fitness> {
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
-                          Card(
-                            margin: EdgeInsets.all(10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 110,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "BMI",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Just Now",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 2, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: (healthData
-                                                                      .height !=
-                                                                  "--" ||
-                                                              healthData
-                                                                      .weight !=
-                                                                  "--")
-                                                          ? (double.parse(healthData
-                                                                      .weight) /
-                                                                  double.parse(
-                                                                      healthData
-                                                                          .height))
-                                                              .toStringAsFixed(
-                                                                  2)
-                                                          : "--",
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 34,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: '',
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 15, top: 0, right: 15),
-                                            child: Text(
-                                              'NORMAL',
-                                              style: GoogleFonts.openSans(
-                                                  fontSize: 14,
-                                                  color: Colors.white60,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.only(right: 30),
-                                      //   child: Icon(
-                                      //     Icons.favorite,
-                                      //     color: Colors.white,
-                                      //     size: 40,
-                                      //   ),
-                                      // )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "BMI",
+                            cardData: (healthData.height != "--" ||
+                                    healthData.weight != "--")
+                                ? (double.parse(healthData.weight) /
+                                        double.parse(healthData.height))
+                                    .toStringAsFixed(2)
+                                : "--",
+                            cardDescription: "Normal",
+                            dateTime: healthData.timeStamp,
                           ),
-                          Card(
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 90,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "HEIGHT",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Just Now",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 2, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: healthData.height !=
-                                                              "--"
-                                                          ? (double.parse(healthData
-                                                                      .height) *
-                                                                  100 /
-                                                                  30.48)
-                                                              .floor()
-                                                              .toString()
-                                                          : "--",
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 34,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: 'ft ',
-                                                    ),
-                                                    TextSpan(
-                                                      text: healthData.height !=
-                                                              "--"
-                                                          ? (((double.parse(healthData
-                                                                              .height) *
-                                                                          100 /
-                                                                          30.48) -
-                                                                      (double.parse(healthData.height) *
-                                                                              100 /
-                                                                              30.48)
-                                                                          .floor()) *
-                                                                  10)
-                                                              .toStringAsFixed(
-                                                                  0)
-                                                          : "--",
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 34,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: 'in',
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Height",
+                            cardData: healthData.height != "--"
+                                ? (double.parse(healthData.height) *
+                                        100 /
+                                        30.48)
+                                    .floor()
+                                    .toString()
+                                : "--",
+                            cardSecondaryData: "ft ",
+                            cardData2: healthData.height != "--"
+                                ? (((double.parse(healthData.height) *
+                                                100 /
+                                                30.48) -
+                                            (double.parse(healthData.height) *
+                                                    100 /
+                                                    30.48)
+                                                .floor()) *
+                                        10)
+                                    .toStringAsFixed(0)
+                                : "--",
+                            cardSecondaryData2: "in",
+                            dateTime: healthData.timeStamp,
                           ),
-                          Card(
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            color: AppColors.cardcolor,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              height: 90,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, top: 10, right: 15),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Weight",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                          "Just Now",
-                                          style: GoogleFonts.openSans(
-                                              fontSize: 14,
-                                              color: Colors.white60,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 2, right: 15),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: GoogleFonts.openSans(
-                                                      fontSize: 15,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: healthData.weight,
-                                                      style:
-                                                          GoogleFonts.openSans(
-                                                              fontSize: 34,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    TextSpan(
-                                                      text: 'kg',
-                                                    ),
-                                                  ],
-                                                ),
-                                              )),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                          FitnessCard(
+                            cardColor: AppColors.cardcolor,
+                            cardTitle: "Weight",
+                            cardData: healthData.weight,
+                            cardSecondaryData: "Kg",
+                            dateTime: healthData.timeStamp,
                           ),
                         ],
                       ),
                     )
                   ],
                 ),
-              );
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          }),
-    );
+              )
+            : Center(child: CircularProgressIndicator()));
   }
 }

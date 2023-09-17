@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Pods/FirebaseFirestore/Firestore/Protos/nanopb/google/api/resource.nanopb.cc \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Pods/FirebaseFirestore/Firestore/Protos/nanopb/google/api/resource.nanopb.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Pods/nanopb/pb.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Pods/FirebaseFirestore/Firestore/core/src/nanopb/pretty_printing.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/strings/str_cat.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/port.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/attributes.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/config.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/options.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/policy_checks.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/optimization.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/strings/numbers.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/internal/endian.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/casts.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/internal/identity.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/macros.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/meta/type_traits.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/internal/unaligned_access.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/numeric/bits.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/numeric/internal/bits.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/numeric/int128.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/numeric/int128_have_intrinsic.inc \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/strings/string_view.h \
+  /Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/macos/Build/Products/Debug/abseil/absl.framework/Headers/base/internal/throw_delegate.h

@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "838ce3b0858e70d4c1a9e1fcfefbfbec4c18a3d27c8ff539f4dd475b3c76c10e"
+build_start_time: [1694887863, 880672931]
+build_end_time: [1694887863, 980492115]
+inputs:
+  "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1694887693, 599241733]
+  "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Runner/AppDelegate.swift": !private [1672922364, 732127189]
+  "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/macos/Runner/MainFlutterWindow.swift": !private [1672922364, 733868598]

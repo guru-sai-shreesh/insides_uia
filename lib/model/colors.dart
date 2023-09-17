@@ -9,7 +9,8 @@ class AppColors {
   static Color layerOneBg = Colors.white;
   static Color layerColor = Colors.white70;
   static Color badgecolor = Color.fromARGB(255, 127, 172, 220);
-  static Color cardcolor = Color.fromARGB(255, 55, 143, 112); //steel blue
+  // static Color cardcolor = Color.fromARGB(255, 55, 143, 112); //steel blue
+  static Color cardcolor = Color.fromARGB(255, 25, 84, 136);
   static Color selectedIndicatorLabelColor = Colors.black;
   static Color unselectedIndicatorLabelColor = Colors.white70;
   static Color IndicatorLineColor = Colors.black;

@@ -123,23 +123,34 @@ class _MyRegisterState extends ConsumerState<MyRegister> {
           slivers: [
             SliverAppBar(
               floating: false,
-              // automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               elevation: 0,
+              centerTitle: true,
               pinned: true,
               expandedHeight: 120,
-              flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.only(left: 45, bottom: 15),
-                centerTitle: false,
-                expandedTitleScale: 1.3,
-                title: Text(
-                  "COMPLETE PROFILE",
-                  style: GoogleFonts.openSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
+              flexibleSpace: LayoutBuilder(
+                builder: (context, constraints) {
+                  final appBarHeight = constraints.maxHeight;
+                  // Calculate padding based on the appBarHeight
+                  const minPadding = EdgeInsets.only(left: 0, bottom: 15);
+                  const maxPadding = EdgeInsets.only(left: 50, bottom: 15);
+                  final padding = EdgeInsets.lerp(minPadding, maxPadding,
+                      (120 - kToolbarHeight) / (appBarHeight - kToolbarHeight));
+
+                  return FlexibleSpaceBar(
+                    titlePadding: padding,
+                    centerTitle: false,
+                    expandedTitleScale: 1.4,
+                    title: Text(
+                      "COMPLETE PROFILE",
+                      style: GoogleFonts.openSans(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             SliverList(

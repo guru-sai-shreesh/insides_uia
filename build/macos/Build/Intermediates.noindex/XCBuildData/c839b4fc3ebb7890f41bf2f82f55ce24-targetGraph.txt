@@ -1,0 +1,177 @@
+Target dependency graph (35 targets)
+PromisesObjC in Pods, no dependencies
+FirebaseAppCheckInterop in Pods, no dependencies
+GoogleUtilities in Pods, depends on:
+PromisesObjC in Pods (explicit)
+FirebaseCoreInternal in Pods, depends on:
+GoogleUtilities in Pods (explicit)
+FirebaseCore in Pods, depends on:
+FirebaseCoreInternal in Pods (explicit)
+GoogleUtilities in Pods (explicit)
+GTMSessionFetcher in Pods, no dependencies
+FirebaseAuth in Pods, depends on:
+FirebaseAppCheckInterop in Pods (explicit)
+FirebaseCore in Pods (explicit)
+GTMSessionFetcher in Pods (explicit)
+GoogleUtilities in Pods (explicit)
+abseil in Pods, no dependencies
+BoringSSL-GRPC in Pods, no dependencies
+gRPC-Core in Pods, depends on:
+BoringSSL-GRPC in Pods (explicit)
+abseil in Pods (explicit)
+gRPC-C++-gRPCCertificates-Cpp in Pods, depends on:
+abseil in Pods (implicit dependency via options '-framework absl' in build setting 'OTHER_LDFLAGS')
+gRPC-Core in Pods (implicit dependency via options '-framework grpc' in build setting 'OTHER_LDFLAGS')
+gRPC-C++ in Pods, depends on:
+abseil in Pods (explicit)
+gRPC-C++-gRPCCertificates-Cpp in Pods (explicit)
+gRPC-Core in Pods (explicit)
+leveldb-library in Pods, no dependencies
+nanopb in Pods, no dependencies
+FirebaseFirestore in Pods, depends on:
+FirebaseCore in Pods (explicit)
+abseil in Pods (explicit)
+gRPC-C++ in Pods (explicit)
+leveldb-library in Pods (explicit)
+nanopb in Pods (explicit)
+FirebaseInstallations in Pods, depends on:
+FirebaseCore in Pods (explicit)
+GoogleUtilities in Pods (explicit)
+PromisesObjC in Pods (explicit)
+FlutterMacOS in Pods, no dependencies
+audioplayers_darwin in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+GoogleAppMeasurement in Pods, depends on:
+GoogleUtilities in Pods (explicit)
+nanopb in Pods (explicit)
+FirebaseAnalytics in Pods, depends on:
+FirebaseCore in Pods (explicit)
+FirebaseInstallations in Pods (explicit)
+GoogleAppMeasurement in Pods (explicit)
+GoogleUtilities in Pods (explicit)
+nanopb in Pods (explicit)
+Firebase in Pods, depends on:
+FirebaseAnalytics in Pods (explicit)
+FirebaseAuth in Pods (explicit)
+FirebaseCore in Pods (explicit)
+FirebaseFirestore in Pods (explicit)
+firebase_core in Pods, depends on:
+Firebase in Pods (explicit)
+FlutterMacOS in Pods (explicit)
+cloud_firestore in Pods, depends on:
+Firebase in Pods (explicit)
+FlutterMacOS in Pods (explicit)
+firebase_core in Pods (explicit)
+nanopb in Pods (explicit)
+device_info_plus in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+facebook_auth_desktop in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+firebase_analytics in Pods, depends on:
+Firebase in Pods (explicit)
+FlutterMacOS in Pods (explicit)
+firebase_core in Pods (explicit)
+firebase_auth in Pods, depends on:
+Firebase in Pods (explicit)
+FlutterMacOS in Pods (explicit)
+firebase_core in Pods (explicit)
+flutter_secure_storage_macos in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+path_provider_foundation in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+shared_preferences_foundation in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+sign_in_with_apple in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+url_launcher_macos in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+Flutter Assemble in Runner, depends on:
+PromisesObjC in Pods (implicit dependency via options '-framework FBLPromises' in build setting 'OTHER_LDFLAGS')
+FirebaseAppCheckInterop in Pods (implicit dependency via options '-framework FirebaseAppCheckInterop' in build setting 'OTHER_LDFLAGS')
+FirebaseAuth in Pods (implicit dependency via options '-framework FirebaseAuth' in build setting 'OTHER_LDFLAGS')
+FirebaseCore in Pods (implicit dependency via options '-framework FirebaseCore' in build setting 'OTHER_LDFLAGS')
+FirebaseCoreInternal in Pods (implicit dependency via options '-framework FirebaseCoreInternal' in build setting 'OTHER_LDFLAGS')
+FirebaseFirestore in Pods (implicit dependency via options '-framework FirebaseFirestore' in build setting 'OTHER_LDFLAGS')
+FirebaseInstallations in Pods (implicit dependency via options '-framework FirebaseInstallations' in build setting 'OTHER_LDFLAGS')
+GTMSessionFetcher in Pods (implicit dependency via options '-framework GTMSessionFetcher' in build setting 'OTHER_LDFLAGS')
+GoogleUtilities in Pods (implicit dependency via options '-framework GoogleUtilities' in build setting 'OTHER_LDFLAGS')
+abseil in Pods (implicit dependency via options '-framework absl' in build setting 'OTHER_LDFLAGS')
+audioplayers_darwin in Pods (implicit dependency via options '-framework audioplayers_darwin' in build setting 'OTHER_LDFLAGS')
+cloud_firestore in Pods (implicit dependency via options '-framework cloud_firestore' in build setting 'OTHER_LDFLAGS')
+device_info_plus in Pods (implicit dependency via options '-framework device_info_plus' in build setting 'OTHER_LDFLAGS')
+facebook_auth_desktop in Pods (implicit dependency via options '-framework facebook_auth_desktop' in build setting 'OTHER_LDFLAGS')
+firebase_analytics in Pods (implicit dependency via options '-framework firebase_analytics' in build setting 'OTHER_LDFLAGS')
+firebase_auth in Pods (implicit dependency via options '-framework firebase_auth' in build setting 'OTHER_LDFLAGS')
+firebase_core in Pods (implicit dependency via options '-framework firebase_core' in build setting 'OTHER_LDFLAGS')
+flutter_secure_storage_macos in Pods (implicit dependency via options '-framework flutter_secure_storage_macos' in build setting 'OTHER_LDFLAGS')
+gRPC-Core in Pods (implicit dependency via options '-framework grpc' in build setting 'OTHER_LDFLAGS')
+gRPC-C++ in Pods (implicit dependency via options '-framework grpcpp' in build setting 'OTHER_LDFLAGS')
+leveldb-library in Pods (implicit dependency via options '-framework leveldb' in build setting 'OTHER_LDFLAGS')
+nanopb in Pods (implicit dependency via options '-framework nanopb' in build setting 'OTHER_LDFLAGS')
+BoringSSL-GRPC in Pods (implicit dependency via options '-framework openssl_grpc' in build setting 'OTHER_LDFLAGS')
+path_provider_foundation in Pods (implicit dependency via options '-framework path_provider_foundation' in build setting 'OTHER_LDFLAGS')
+shared_preferences_foundation in Pods (implicit dependency via options '-framework shared_preferences_foundation' in build setting 'OTHER_LDFLAGS')
+sign_in_with_apple in Pods (implicit dependency via options '-framework sign_in_with_apple' in build setting 'OTHER_LDFLAGS')
+url_launcher_macos in Pods (implicit dependency via options '-framework url_launcher_macos' in build setting 'OTHER_LDFLAGS')
+Pods-Runner in Pods, depends on:
+BoringSSL-GRPC in Pods (explicit)
+Firebase in Pods (explicit)
+FirebaseAnalytics in Pods (explicit)
+FirebaseAppCheckInterop in Pods (explicit)
+FirebaseAuth in Pods (explicit)
+FirebaseCore in Pods (explicit)
+FirebaseCoreInternal in Pods (explicit)
+FirebaseFirestore in Pods (explicit)
+FirebaseInstallations in Pods (explicit)
+FlutterMacOS in Pods (explicit)
+GTMSessionFetcher in Pods (explicit)
+GoogleAppMeasurement in Pods (explicit)
+GoogleUtilities in Pods (explicit)
+PromisesObjC in Pods (explicit)
+abseil in Pods (explicit)
+audioplayers_darwin in Pods (explicit)
+cloud_firestore in Pods (explicit)
+device_info_plus in Pods (explicit)
+facebook_auth_desktop in Pods (explicit)
+firebase_analytics in Pods (explicit)
+firebase_auth in Pods (explicit)
+firebase_core in Pods (explicit)
+flutter_secure_storage_macos in Pods (explicit)
+gRPC-C++ in Pods (explicit)
+gRPC-Core in Pods (explicit)
+leveldb-library in Pods (explicit)
+nanopb in Pods (explicit)
+path_provider_foundation in Pods (explicit)
+shared_preferences_foundation in Pods (explicit)
+sign_in_with_apple in Pods (explicit)
+url_launcher_macos in Pods (explicit)
+Runner in Runner, depends on:
+Flutter Assemble in Runner (explicit)
+Pods-Runner in Pods (implicit dependency via file 'Pods_Runner.framework' in build phase 'Link Binary')
+PromisesObjC in Pods (implicit dependency via options '-framework FBLPromises' in build setting 'OTHER_LDFLAGS')
+FirebaseAppCheckInterop in Pods (implicit dependency via options '-framework FirebaseAppCheckInterop' in build setting 'OTHER_LDFLAGS')
+FirebaseAuth in Pods (implicit dependency via options '-framework FirebaseAuth' in build setting 'OTHER_LDFLAGS')
+FirebaseCore in Pods (implicit dependency via options '-framework FirebaseCore' in build setting 'OTHER_LDFLAGS')
+FirebaseCoreInternal in Pods (implicit dependency via options '-framework FirebaseCoreInternal' in build setting 'OTHER_LDFLAGS')
+FirebaseFirestore in Pods (implicit dependency via options '-framework FirebaseFirestore' in build setting 'OTHER_LDFLAGS')
+FirebaseInstallations in Pods (implicit dependency via options '-framework FirebaseInstallations' in build setting 'OTHER_LDFLAGS')
+GTMSessionFetcher in Pods (implicit dependency via options '-framework GTMSessionFetcher' in build setting 'OTHER_LDFLAGS')
+GoogleUtilities in Pods (implicit dependency via options '-framework GoogleUtilities' in build setting 'OTHER_LDFLAGS')
+abseil in Pods (implicit dependency via options '-framework absl' in build setting 'OTHER_LDFLAGS')
+audioplayers_darwin in Pods (implicit dependency via options '-framework audioplayers_darwin' in build setting 'OTHER_LDFLAGS')
+cloud_firestore in Pods (implicit dependency via options '-framework cloud_firestore' in build setting 'OTHER_LDFLAGS')
+device_info_plus in Pods (implicit dependency via options '-framework device_info_plus' in build setting 'OTHER_LDFLAGS')
+facebook_auth_desktop in Pods (implicit dependency via options '-framework facebook_auth_desktop' in build setting 'OTHER_LDFLAGS')
+firebase_analytics in Pods (implicit dependency via options '-framework firebase_analytics' in build setting 'OTHER_LDFLAGS')
+firebase_auth in Pods (implicit dependency via options '-framework firebase_auth' in build setting 'OTHER_LDFLAGS')
+firebase_core in Pods (implicit dependency via options '-framework firebase_core' in build setting 'OTHER_LDFLAGS')
+flutter_secure_storage_macos in Pods (implicit dependency via options '-framework flutter_secure_storage_macos' in build setting 'OTHER_LDFLAGS')
+gRPC-Core in Pods (implicit dependency via options '-framework grpc' in build setting 'OTHER_LDFLAGS')
+gRPC-C++ in Pods (implicit dependency via options '-framework grpcpp' in build setting 'OTHER_LDFLAGS')
+leveldb-library in Pods (implicit dependency via options '-framework leveldb' in build setting 'OTHER_LDFLAGS')
+nanopb in Pods (implicit dependency via options '-framework nanopb' in build setting 'OTHER_LDFLAGS')
+BoringSSL-GRPC in Pods (implicit dependency via options '-framework openssl_grpc' in build setting 'OTHER_LDFLAGS')
+path_provider_foundation in Pods (implicit dependency via options '-framework path_provider_foundation' in build setting 'OTHER_LDFLAGS')
+shared_preferences_foundation in Pods (implicit dependency via options '-framework shared_preferences_foundation' in build setting 'OTHER_LDFLAGS')
+sign_in_with_apple in Pods (implicit dependency via options '-framework sign_in_with_apple' in build setting 'OTHER_LDFLAGS')
+url_launcher_macos in Pods (implicit dependency via options '-framework url_launcher_macos' in build setting 'OTHER_LDFLAGS')

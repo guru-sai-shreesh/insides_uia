@@ -1,6 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:insides/features/mindful/sleep_therapy.dart';
+import 'package:insides/features/sleep/sleep.dart';
 
 import '../../model/colors.dart';
 import '../../components/custom_tab_indicator.dart';
@@ -26,13 +28,20 @@ class _MindfulState extends State<Mindful> with TickerProviderStateMixin {
     Tab(
       child: Container(
         margin: EdgeInsets.only(right: 23),
-        child: Text("Reduce Anxiety"),
+        child: Text("Anxiety"),
+      ),
+    ),
+    Tab(
+      child: Container(
+        margin: EdgeInsets.only(right: 23),
+        child: Text("Binaural Sleep"),
       ),
     ),
   ];
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
+    TabController _tabController =
+        TabController(length: myTabs.length, vsync: this);
 
     return Container(
       color: Colors.white,
@@ -76,7 +85,7 @@ class _MindfulState extends State<Mindful> with TickerProviderStateMixin {
                     margin: EdgeInsets.only(top: 5),
                     padding: EdgeInsets.only(left: 15),
                     child: DefaultTabController(
-                      length: 2,
+                      length: myTabs.length,
                       child: TabBar(
                         controller: _tabController,
                         labelPadding: EdgeInsets.all(0),
@@ -104,10 +113,7 @@ class _MindfulState extends State<Mindful> with TickerProviderStateMixin {
                     child: TabBarView(
                         physics: BouncingScrollPhysics(),
                         controller: _tabController,
-                        children: [
-                          Meditation(),
-                          Anxiety(),
-                        ]),
+                        children: [Meditation(), Anxiety(), SleepTherapy()]),
                   )
                 ],
               ),

@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insides/features/dashboard/dashboard.dart';
 import 'package:insides/features/fitness/views/fitness.dart';
+import 'package:insides/features/fitness/components/health_insights.dart';
 import 'package:insides/features/mindful/mindful.dart';
 import 'package:insides/features/prescriptions/prescriptions.dart';
 import 'package:insides/features/profile/profile.dart';
 import 'package:insides/features/sleep/sleep.dart';
+import 'package:insides/model/colors.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:health/health.dart';
 
@@ -24,7 +26,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final screens = [
       Dashboard(),
-      Sleep(),
+      Mindful(),
       Fitness(),
       Prescriptions(),
       Profile()
@@ -34,7 +36,7 @@ class HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           unselectedItemColor: Colors.grey,
-          selectedItemColor: Color.fromARGB(255, 29, 88, 32),
+          selectedItemColor: AppColors.primaryColor,
           currentIndex: currentIndex,
           onTap: (index) => setState(() {
                 currentIndex = index;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../model/heath_data.dart';
+import '../../model/health_data.dart';
 
 class FitnessSharedPreferences {
   static Future<void> cacheHealthData(HealthDataModel data) async {

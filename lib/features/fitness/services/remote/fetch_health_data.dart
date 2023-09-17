@@ -198,4 +198,104 @@ class FetchHealthData {
     // }
     return _healthDataList;
   }
+
+  Future<List<HealthDataPoint>> fetchTodayHeartRateData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.HEART_RATE]);
+      final heartRateData = await health.getHealthDataFromTypes(
+          DateTime(today.year, today.month, today.day),
+          today,
+          [HealthDataType.HEART_RATE]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching heart rate data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint>> fetchWeeklyHeartRateData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.HEART_RATE]);
+      final heartRateData = await health
+          .getHealthDataFromTypes(lastWeek, today, [HealthDataType.HEART_RATE]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching heart rate data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint>> fetchMonthlyHeartRateData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.STEPS]);
+      final heartRateData = await health
+          .getHealthDataFromTypes(lastMonth, today, [HealthDataType.STEPS]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching heart rate data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint>> fetchTodayStepsData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.STEPS]);
+      final heartRateData = await health.getHealthDataFromTypes(
+          DateTime(today.year, today.month, today.day),
+          today,
+          [HealthDataType.STEPS]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching steps data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint>> fetchWeeklyStepsData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.STEPS]);
+      final heartRateData = await health
+          .getHealthDataFromTypes(lastWeek, today, [HealthDataType.STEPS]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching steps data: $e');
+      return [];
+    }
+  }
+
+  Future<List<HealthDataPoint>> fetchMonthlyStepsData() async {
+    final today = DateTime.now();
+    final lastWeek = today.subtract(Duration(days: 7));
+    final lastMonth = today.subtract(Duration(days: 30));
+
+    try {
+      await health.requestAuthorization([HealthDataType.STEPS]);
+      final heartRateData = await health
+          .getHealthDataFromTypes(lastMonth, today, [HealthDataType.STEPS]);
+      return heartRateData;
+    } catch (e) {
+      print('Error fetching steps data: $e');
+      return [];
+    }
+  }
 }
