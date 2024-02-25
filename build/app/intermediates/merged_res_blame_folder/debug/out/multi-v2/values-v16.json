@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/gurusaishreesh/Documents/GitHub/insides_uia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/f5773446f29d96db49c03640b9646f45/transformed/appcompat-1.1.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/gurusaishreesh/.gradle/caches/transforms-3/f5773446f29d96db49c03640b9646f45/transformed/appcompat-1.1.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/b5dcf43da089651093a76bc1fb6b9d83/transformed/core-1.10.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/gurusaishreesh/.gradle/caches/transforms-3/8a039127d4e457e2aac7b76558867a81/transformed/core-1.12.0-alpha05/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

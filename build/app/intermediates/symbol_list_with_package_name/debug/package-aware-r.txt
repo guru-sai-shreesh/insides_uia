@@ -800,6 +800,7 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
+drawable notification_oversize_large_icon_bg
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -919,6 +920,7 @@ id dialog_button
 id disableHome
 id display_always
 id edit_query
+id edit_text_id
 id end
 id end_padder
 id expand_activities_button
@@ -929,6 +931,7 @@ id fill_vertical
 id forever
 id fragment_container_view_tag
 id group_divider
+id hide_ime_id
 id home
 id homeAsUp
 id icon
@@ -969,6 +972,7 @@ id progress_bar
 id progress_circular
 id progress_horizontal
 id radio
+id report_drawn
 id right
 id right_icon
 id right_side
@@ -1034,6 +1038,7 @@ id unknown
 id up
 id useLogo
 id view_tree_lifecycle_owner
+id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible_removing_fragment_view_tag
@@ -1089,6 +1094,8 @@ layout com_facebook_login_fragment
 layout com_facebook_smart_device_dialog_fragment
 layout com_facebook_tooltip_bubble
 layout custom_dialog
+layout ime_base_split_test_activity
+layout ime_secondary_split_test_activity
 layout messenger_button_send_blue_large
 layout messenger_button_send_blue_round
 layout messenger_button_send_blue_small
@@ -1143,6 +1150,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string androidx_startup
 string app_name
 string call_notification_answer_action
 string call_notification_answer_video_action
@@ -1644,4 +1652,5 @@ styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable com_facebook_like_view com_facebook_auxiliary_view_position com_facebook_foreground_color com_facebook_horizontal_alignment com_facebook_object_id com_facebook_object_type com_facebook_style
 styleable com_facebook_login_view com_facebook_confirm_logout com_facebook_login_button_radius com_facebook_login_button_transparency com_facebook_login_text com_facebook_logout_text com_facebook_tooltip_mode
 styleable com_facebook_profile_picture_view com_facebook_is_cropped com_facebook_preset_size
+xml ga_ad_services_config
 xml image_share_filepaths

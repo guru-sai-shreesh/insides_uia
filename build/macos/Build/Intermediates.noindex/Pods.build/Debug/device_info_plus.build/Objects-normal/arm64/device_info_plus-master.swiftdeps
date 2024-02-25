@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "328d8df07361363fc6b722fce6bcbfca115994c590f4247502f7d626a81a06f3"
-build_start_time: [1694887699, 204902172]
-build_end_time: [1694887702, 696537971]
-inputs:
-  "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/device_info_plus-8.2.2/macos/Classes/CwlSysctl.swift": [1692847267, 990696668]
-  "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/device_info_plus-8.2.2/macos/Classes/DeviceInfoPlusMacosPlugin.swift": [1692847267, 990825891]
-  "/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/device_info_plus-8.2.2/macos/Classes/SystemUUID.swift": [1692847267, 990991353]

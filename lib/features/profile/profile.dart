@@ -19,7 +19,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   // late String photoUrl;
-  late final UserModel user;
+  late UserModel user;
 
   @override
   void initState() {
@@ -28,7 +28,13 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _fetchUserData() async {
-    user = (await AuthSharedPreferences.getUserDataFromPrefs())!;
+    user = UserModel(
+        uid: "user1",
+        email: "email",
+        displayName: "displayName",
+        photoURL:
+            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+        signInType: SignInType.google);
   }
 
   final FirebaseAuthService auth = FirebaseAuthService();

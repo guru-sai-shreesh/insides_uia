@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+// import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insides/main.dart';
-import 'package:flutter_clean_calendar/clean_calendar_event.dart';
+// import 'package:flutter_clean_calendar/clean_calendar_event.dart';
 import 'package:insides/model/colors.dart';
 
 class Prescriptions extends StatefulWidget {
@@ -15,34 +15,34 @@ class Prescriptions extends StatefulWidget {
 class _PrescriptionsState extends State<Prescriptions> {
   late DateTime _selectedDay;
 
-  Map<DateTime, List<CleanCalendarEvent>> event = {
-    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day): [
-      CleanCalendarEvent(
-        'Paracetamol 1mg',
-        startTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 7, 0),
-        endTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 10, 0),
-        description: 'daily',
-        color: AppColors.primaryColor,
-      ),
-      CleanCalendarEvent(
-        'Nicotin',
-        startTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 7, 0),
-        endTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 10, 0),
-        description: 'daily',
-        color: AppColors.primaryColor,
-      ),
-    ],
-  };
+  // Map<DateTime, List<CleanCalendarEvent>> event = {
+  //   DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day): [
+  //     CleanCalendarEvent(
+  //       'Paracetamol 1mg',
+  //       startTime: DateTime(DateTime.now().year, DateTime.now().month,
+  //           DateTime.now().day, 7, 0),
+  //       endTime: DateTime(DateTime.now().year, DateTime.now().month,
+  //           DateTime.now().day, 10, 0),
+  //       description: 'daily',
+  //       color: AppColors.primaryColor,
+  //     ),
+  //     CleanCalendarEvent(
+  //       'Nicotin',
+  //       startTime: DateTime(DateTime.now().year, DateTime.now().month,
+  //           DateTime.now().day, 7, 0),
+  //       endTime: DateTime(DateTime.now().year, DateTime.now().month,
+  //           DateTime.now().day, 10, 0),
+  //       description: 'daily',
+  //       color: AppColors.primaryColor,
+  //     ),
+  //   ],
+  // };
 
-  void _handleData(date) {
-    setState(() {
-      _selectedDay = date;
-    });
-  }
+  // void _handleData(date) {
+  //   setState(() {
+  //     _selectedDay = date;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,45 +76,45 @@ class _PrescriptionsState extends State<Prescriptions> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: Calendar(
-                        bottomBarColor: Colors.transparent,
-                        selectedColor: AppColors.primaryColor,
-                        todayColor: AppColors.primaryColor,
-                        // eventColor: AppColors.primaryColor,
-                        // eventDoneColor: Colors.yellow,
-                        dayOfWeekStyle:
-                            TextStyle(color: AppColors.primaryColor),
-                        bottomBarTextStyle: TextStyle(color: Colors.black),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 15, right: 15),
+                  //   child: SizedBox(
+                  //     height: MediaQuery.of(context).size.height,
+                  //     width: MediaQuery.of(context).size.width,
+                  //     child: Calendar(
+                  //       bottomBarColor: Colors.transparent,
+                  //       selectedColor: AppColors.primaryColor,
+                  //       todayColor: AppColors.primaryColor,
+                  //       // eventColor: AppColors.primaryColor,
+                  //       // eventDoneColor: Colors.yellow,
+                  //       dayOfWeekStyle:
+                  //           TextStyle(color: AppColors.primaryColor),
+                  //       bottomBarTextStyle: TextStyle(color: Colors.black),
 
-                        events: event,
-                        // isExpanded: true,
-                        isExpandable: true,
-                        hideArrows: false,
-                        hideBottomBar: false,
-                        weekDays: const [
-                          'Mon',
-                          'Tue',
-                          'Wed',
-                          'Thu',
-                          'Fri',
-                          'Sat',
-                          'Sun'
-                        ],
+                  //       events: event,
+                  //       // isExpanded: true,
+                  //       isExpandable: true,
+                  //       hideArrows: false,
+                  //       hideBottomBar: false,
+                  //       weekDays: const [
+                  //         'Mon',
+                  //         'Tue',
+                  //         'Wed',
+                  //         'Thu',
+                  //         'Fri',
+                  //         'Sat',
+                  //         'Sun'
+                  //       ],
 
-                        onRangeSelected: (range) {
-                          print('selected day: ${range.from}, ${range.to}');
-                        },
-                        onDateSelected: (date) {
-                          return _handleData(date);
-                        },
-                      ),
-                    ),
-                  ),
+                  //       onRangeSelected: (range) {
+                  //         print('selected day: ${range.from}, ${range.to}');
+                  //       },
+                  //       onDateSelected: (date) {
+                  //         return _handleData(date);
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             )

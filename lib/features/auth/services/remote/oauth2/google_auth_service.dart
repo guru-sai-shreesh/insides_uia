@@ -46,7 +46,7 @@ class GoogleAuthService {
       showCustomSnackBar(context, getErrorMessage(e.code));
     } catch (error) {
       print(error);
-      showCustomSnackBar(context, 'An error occurred. Try again later.');
+      showCustomSnackBar(context, error.toString());
     }
 
     return null;

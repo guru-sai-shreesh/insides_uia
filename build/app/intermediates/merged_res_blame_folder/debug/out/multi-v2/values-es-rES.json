@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gurusaishreeshtirumalla/Documents/GitHub/insides_uia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rES/values-es-rES.xml",
+            "outputFile": "/Users/gurusaishreesh/Documents/GitHub/insides_uia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rES/values-es-rES.xml",
             "map": [
                 {
-                    "source": "/Users/gurusaishreeshtirumalla/.gradle/caches/transforms-3/7926d5190514dc2d7da06a57061ee6bf/transformed/jetified-facebook-login-16.2.0/res/values-es-rES/values-es-rES.xml",
+                    "source": "/Users/gurusaishreesh/.gradle/caches/transforms-3/f1fdf71ce0c42526ab1d1db590105e2a/transformed/jetified-facebook-login-16.3.0/res/values-es-rES/values-es-rES.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

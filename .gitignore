@@ -1,0 +1,40 @@
+# Miscellaneous
+*.log
+*.idea
+*.iml
+
+# Dart/Flutter specific files
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/local.properties
+**/android/.idea/workspace.xml
+**/android/.idea/libraries
+**/android/.idea/caches
+**/android/**/GeneratedPluginRegistrant.java
+**/android/**/local.properties
+**/ios/**/.generated/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+ios/Pods/
+**/ios/**/Podfile.lock
+**/ios/**/Pods/
+**/ios/**/Runner.xcworkspace/
+.DS_Store
+*.g.dart
+*.flutter-plugins
+*.flutter-plugins-dependencies
+*.pid
+*.lock
+.vscode/
+
+# IntelliJ
+.idea

@@ -190,31 +190,32 @@ class _AuthScreenState extends State<AuthScreen> {
                 width: size.width * 0.6,
               ),
               Container(
-                alignment: Alignment.centerRight,
-                margin: const EdgeInsets.only(
-                  top: 25,
-                  right: 25,
-                ),
-                child: RichText(
-                  textAlign: TextAlign.start,
-                  text: TextSpan(
-                      text: "Founded By",
-                      style: GoogleFonts.openSans(
-                        color: Colors.black54,
-                        fontSize: 12,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '\nGuru sai shreesh',
-                          style: GoogleFonts.openSans(
-                            color: Colors.black54,
-                            fontSize: 12,
-                            // decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ]),
-                ),
-              ),
+                  alignment: Alignment.centerRight,
+                  margin: const EdgeInsets.only(
+                    top: 25,
+                    right: 25,
+                  ),
+                  child: Container()
+                  // RichText(
+                  //   textAlign: TextAlign.start,
+                  //   text: TextSpan(
+                  //       text: "Founded By",
+                  //       style: GoogleFonts.open5Sans(
+                  //         color: Colors.black54,
+                  //         fontSize: 12,
+                  //       ),
+                  //       children: <TextSpan>[
+                  //         TextSpan(
+                  //           text: '\nGuru sai shreesh',
+                  //           style: GoogleFonts.openSans(
+                  //             color: Colors.black54,
+                  //             fontSize: 12,
+                  //             // decoration: TextDecoration.underline,
+                  //           ),
+                  //         ),
+                  //       ]),
+                  // ),
+                  ),
             ],
           ),
         ));

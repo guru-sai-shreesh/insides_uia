@@ -20,7 +20,7 @@ class FetchHealthData {
       }
 
       print('Total number of steps: $steps');
-    } else {
+    } else { 
       print("Authorization not granted - error in authorization");
       steps = null;
     }

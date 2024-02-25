@@ -18,6 +18,7 @@ int attr fontStyle 0x0
 int attr fontVariationSettings 0x0
 int attr fontWeight 0x0
 int attr keylines 0x0
+int attr lStar 0x0
 int attr layout_anchor 0x0
 int attr layout_anchorGravity 0x0
 int attr layout_behavior 0x0
@@ -160,6 +161,7 @@ int id text2 0x0
 int id time 0x0
 int id title 0x0
 int id top 0x0
+int id view_tree_lifecycle_owner 0x0
 int integer google_play_services_version 0x0
 int integer status_bar_notification_info_maxnum 0x0
 int layout custom_dialog 0x0
@@ -188,10 +190,12 @@ int styleable ActivityRule_alwaysExpand 0
 int[] styleable Capability { 0x0, 0x0 }
 int styleable Capability_queryPatterns 0
 int styleable Capability_shortcutMatchRequired 1
-int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5 }
+int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5, 0x1010647, 0x0 }
 int styleable ColorStateListItem_alpha 0
 int styleable ColorStateListItem_android_alpha 1
 int styleable ColorStateListItem_android_color 2
+int styleable ColorStateListItem_android_lStar 3
+int styleable ColorStateListItem_lStar 4
 int[] styleable CoordinatorLayout { 0x0, 0x0 }
 int styleable CoordinatorLayout_keylines 0
 int styleable CoordinatorLayout_statusBarBackground 1
@@ -256,3 +260,4 @@ int styleable SplitPlaceholderRule_splitLayoutDirection 1
 int styleable SplitPlaceholderRule_splitMinSmallestWidth 2
 int styleable SplitPlaceholderRule_splitMinWidth 3
 int styleable SplitPlaceholderRule_splitRatio 4
+int xml ga_ad_services_config 0x0

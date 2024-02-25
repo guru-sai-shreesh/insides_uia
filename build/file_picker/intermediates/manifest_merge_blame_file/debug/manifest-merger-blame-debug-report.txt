@@ -4,26 +4,29 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml
+6-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="16" />
-7-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml
+7-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml
 8
-9    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-9-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:3:5-79
-9-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:3:22-77
-10
-11    <queries>
-11-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:4:5-9:15
-12        <intent>
-12-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:5:6-8:14
-13            <action android:name="android.intent.action.GET_CONTENT" />
-13-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:6:9-68
-13-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:6:17-65
-14
-15            <data android:mimeType="*/*" />
-15-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:7:9-39
-15-->/Users/gurusaishreeshtirumalla/.pub-cache/hosted/pub.dev/file_picker-5.3.1/android/src/main/AndroidManifest.xml:7:15-37
-16        </intent>
-17    </queries>
-18
-19</manifest>
+9    <uses-permission
+9-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:3:5-106
+10        android:name="android.permission.READ_EXTERNAL_STORAGE"
+10-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:3:22-77
+11        android:maxSdkVersion="32" />
+11-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:3:78-104
+12
+13    <queries>
+13-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:4:5-9:15
+14        <intent>
+14-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:5:6-8:14
+15            <action android:name="android.intent.action.GET_CONTENT" />
+15-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:6:9-68
+15-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:6:17-65
+16
+17            <data android:mimeType="*/*" />
+17-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:7:9-39
+17-->/Users/gurusaishreesh/.pub-cache/hosted/pub.dev/file_picker-6.1.1/android/src/main/AndroidManifest.xml:7:15-37
+18        </intent>
+19    </queries>
+20
+21</manifest>
